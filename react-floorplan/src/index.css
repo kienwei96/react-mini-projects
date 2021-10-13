@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+div {
+  border: 0px solid;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.bedroom1,
+.bedroom2,
+.bedroom3 {
+  background-color: pink;
+}
+
+.fullbath,
+.halfbath {
+  background-color: green;
+}
+
+.livingroom {
+  background-color: indianred;
+}
+
+.kitchen {
+  background-color: lawngreen;
+}
+
+.oven,
+.sink {
+  background-color: orange;
+}
+
+.floorplan {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.division1 {
+  display: flex;
+  flex-direction: column;
+  height: 650px;
+}
+
+.division2 {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  height: 650px;
+  width: 600px;
+}
+
+.bedroom1 {
+  height: 250px;
+  display: block;
+}
+
+.fullbath {
+  height: 150px;
+}
+
+.bedroom2 {
+  height: 250px;
+}
+
+.livingroom {
+  height: 400px;
+  width: 400px;
+}
+
+.kitchen {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 200px;
+}
+
+.oven,
+.sink {
+  text-align: center;
+  width: 100px;
+  height: 50px;
+}
+
+.halfbath {
+  height: 250px;
+  width: 300px;
+}
+
+.bedroom3 {
+  height: 250px;
+  width: 300px;
+}
