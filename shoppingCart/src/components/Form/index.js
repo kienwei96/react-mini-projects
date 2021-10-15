@@ -26,12 +26,6 @@ function Form(props) {
   const [hasErrors, setHasErrors]=useState(true)
 
 
-  // const checkError = () => {
-  //   if(isNameValid &&) {
-  //     setHasErrors(false)
-  //     return hasErrors;
-  //   }
-  // }
   const onNameBlur=()=>{
     
     const isNameValid=validateName(product.name)
@@ -68,14 +62,7 @@ function Form(props) {
     }
   }
 
-  const checkError =() => {
-   
-    setHasErrors(false);
-    return ''
-  }
-
   
-
   const handleNameChange = (ev) => {
     
     setProduct({
@@ -120,18 +107,18 @@ function Form(props) {
       <div className="form-signin">
         <h2 className="form-signin-heading">{props.title}</h2>
         <div className="instruction">
-        {isNameValid && isPriceValid && isDesValid?'':<p>Please enter a valid: {isNameValid?'':'(name)'} {isPriceValid?'':'(price)'} {isDesValid?'':'description'}</p>}
+        {isNameValid && isPriceValid && isDesValid?'':<p>Please enter a valid: {isNameValid?'':'(name)'} {isPriceValid?'':'(price)'} {isDesValid?'':'(description)'}</p>}
         </div>
         <input 
         className='form-control' value={product.name} type='text' name='name' placeholder='name, for etc: chocolate' onChange={handleNameChange} onBlur={onNameBlur}>
         </input>
         <input 
-        className='form-control' value={product.price} type='text' name='price' placeholder='price, for etc: 10.95' onChange={handlePriceChange} onBlur={onPriceBlur}>
+        className='form-control' value={product.price} type='number' name='price' placeholder='price, for etc: 10.95' onChange={handlePriceChange} onBlur={onPriceBlur}>
         </input>
         <input 
         className='form-control' value={product.description} type='text' name='description' placeholder='description, for etc: food' onChange={handleDescriptionChange} onBlur={onDesBlur}>
         </input>
-        <input type='submit' onClick={handleSubmit} disabled={hasErrors}/>
+        <input className='button' type='submit' onClick={handleSubmit} disabled={hasErrors}/>
       </div>
     </div>
   );
