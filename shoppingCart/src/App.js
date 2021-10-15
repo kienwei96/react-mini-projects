@@ -6,6 +6,7 @@ import MyShoppingCart from './components/MyShoppingCart';
 import Form from './components/Form';
 import productsArr from './products';
 
+
 export default function App() {
   const [products, setProducts] = useState(productsArr);
   const [cart, setCart] = useState([]);
@@ -16,6 +17,10 @@ export default function App() {
   const addProductToCart = (product) => {
     setCart([...cart, product]);
   };
+
+  const addToProduct = (product) => {
+    setProducts([product, ...products])
+  }
 
   const removeNthItemFromCart = (n) => {
     const filtered = cart.filter((cartItem, index) => {
@@ -34,7 +39,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Big Time Shopping</h1>
-      <Form />
+      <Form products={products} handleSubmit={addToProduct}/>
       <div className="products">
       <AllTheThings products={products} onProductClick={addProductToCart} />
       <MyShoppingCart cart={cart} onCartItemClick={removeNthItemFromCart} />
