@@ -42,7 +42,7 @@ function App() {
     console.log(data.data);
     console.log(gifSearch);
   
-    let random = Math.floor(Math.random() * 10)
+    let random = Math.floor(Math.random() * 40)
   
     setGifData(data.data[random].images.downsized_large.url)
     };
