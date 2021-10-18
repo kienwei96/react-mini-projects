@@ -1,4 +1,4 @@
-# GA - Lab04 (Intro to component Life Cycle and fetching data on REACT)
+# GA - Lab04 (Intro to component Life Cycle on REACT)
 
 Add/remove colour div app (add button to add or remove color div)
 
