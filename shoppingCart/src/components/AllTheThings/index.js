@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+
+import { cartContext } from "../context/cartContext";
+
 
 function AllTheThings(props) {
+
+
+  const [cart, dispatch] = useContext(cartContext);
+  
  
  
   return (
     <div className="AllTheThings">
       <h2>Put these in your cart!</h2>
       <ul>
-        {props.products.map((product) => {
+        {props.product.map((item) => {
           return (
-            <li onClick={() => props.onProductClick(product)}>
-             {`${product.name} - $${product.price}`}
+            <li onClick={() => dispatch({type:'ADD', value:item})}>
+             {`${item.name} - $${item.price}`}
             </li>
           );
         })}

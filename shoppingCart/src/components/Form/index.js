@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { productContext } from "../context/productContext";
 
 
 
@@ -19,6 +20,7 @@ function validateDes(des) {
 
 
 function Form(props) {
+  const [products,setProducts] = useContext(productContext)
   const [product, setProduct] = useState({name:'',price:'', description:''})
   const [isNameValid, setIsNameValid]=useState(false)
   const [isPriceValid, setIsPriceValid]=useState(false)
@@ -88,10 +90,15 @@ function Form(props) {
 
     })
   }
+  
+  const addToProduct = (product) => {
+    setProducts([product, ...products])
+  }
 
   const handleSubmit=()=>{
     
-    props.handleSubmit(product)
+
+    addToProduct(product);
 
     setProduct({
       name:'',price:'', description:''

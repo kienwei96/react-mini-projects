@@ -1,48 +1,42 @@
 // import useState
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import './styles.css';
 import AllTheThings from './components/AllTheThings';
 import MyShoppingCart from './components/MyShoppingCart';
 import Form from './components/Form';
 import productsArr from './products';
+import { productContext } from "./components/context/productContext";
+import { cartContext } from "./components/context/cartContext";
 
+
+const counterReducer=(state,action)=>{
+  switch(action.type){
+    case 'ADD':
+      return ([...state, action.value])
+    case 'REMOVE':
+      const filtered = state.filter((cartItem, index) => index !== action.value)
+      return state = filtered
+    default:
+      return state
+  }
+}
 
 export default function App() {
   const [products, setProducts] = useState(productsArr);
-  const [cart, setCart] = useState([]);
-
-  // create an addToCart function that takes in a product as a param
-  // using the ...spread operator add the product to the cart array
-
-  const addProductToCart = (product) => {
-    setCart([...cart, product]);
-  };
-
-  const addToProduct = (product) => {
-    setProducts([product, ...products])
-  }
-
-  const removeNthItemFromCart = (n) => {
-    const filtered = cart.filter((cartItem, index) => {
-      console.log(n);
-      return index !== n;
-      
-    });
-    setCart(filtered);
-  };
-
-
-
-  // create an removeFromCart function that takes in an index as a param
-  // using Array.filter remove create a new array where that item is removed
+  const [cart, dispatch]=useReducer(counterReducer,[])
+  
 
   return (
     <div className="App">
       <h1>Big Time Shopping</h1>
-      <Form products={products} handleSubmit={addToProduct}/>
+      <productContext.Provider value={[products,setProducts]}>
+      <Form />
+      </productContext.Provider>
       <div className="products">
-      <AllTheThings products={products} onProductClick={addProductToCart} />
-      <MyShoppingCart cart={cart} onCartItemClick={removeNthItemFromCart} />
+      <cartContext.Provider value={[cart, dispatch]}>
+      <AllTheThings product={products} />
+      <MyShoppingCart  />
+      </cartContext.Provider>
     </div>
     </div>
   );
